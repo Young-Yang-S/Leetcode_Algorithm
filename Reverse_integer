@@ -1,0 +1,25 @@
+Difficulty : Easy
+
+class solution():
+    def reverse_integer(self, integer):
+        if integer<0:
+            sign = -1
+        else:
+            sign= 1
+        integer = abs(integer)
+        reverse = 0
+        while integer !=0:
+            pop = integer%10
+            integer //= 10
+            reverse = reverse*10 + pop
+        reverse= sign * reverse
+        if (reverse < (-2**31-1) or reverse > 2**31):
+            return 0
+        else:
+            return reverse
+
+integer = 1232423
+case_one = solution()
+case_one.reverse_integer(integer)
+
+# use pop mod method to reverse it. 
