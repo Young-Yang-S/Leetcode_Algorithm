@@ -1,0 +1,56 @@
+Problem: Valid Parentheses
+
+Example 1:
+Input: s = "()"
+Output: true
+
+# this problem is skilled problem, which uses the features of parenthesises and stacking method, we just append open brackets into our stack and once we meet with close braket, we check whehter the pop element in stack 
+# is the same type of open bracket, if yes, then we have poped it, then continue it, until iterate for all elements in the list, then finally check whether stack is empty to eliminate the influence of all open brackets.
+class Solution(object):
+    def isValid(self, s):
+
+        stack = []
+
+        mapping = {")": "(", "}": "{", "]": "["}
+
+        # For every bracket in the expression.
+        for char in s:
+
+            # If the character is an closing bracket
+            if char in mapping:
+
+                # Pop the topmost element from the stack, if it is non empty
+                # Otherwise assign a dummy value of '#' to the top_element variable
+                top_element = stack.pop() if stack else '#'
+
+                # The mapping for the opening bracket in our hash and the top
+                # element of the stack don't match, return False
+                if mapping[char] != top_element:
+                    return False
+            else:
+                # We have an opening bracket, simply push it onto the stack.
+                stack.append(char)
+
+        # In the end, if the stack is empty, then we have a valid expression.
+        # The stack won't be empty for cases like ((()
+        return not stack
+
+
+# Solution 2 from ray831
+# This is cleaner and tiny code, it eliminates paired of brackets until it can't find it, then check whether string is empty, if it is, then print yes, pretty clever solution
+class Solution(object):
+    def isValid(self, s):
+        while "()" in s or "{}" in s or '[]' in s:
+            s = s.replace("()", "").replace('{}', "").replace('[]', "")
+        return s == ''
+    
+s = "()[]{}"  
+case = Solution()
+case.isValid(s)
+
+
+
+
+
+
+
