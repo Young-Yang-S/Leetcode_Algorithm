@@ -1,0 +1,30 @@
+Problem: Longest Common Prefix
+
+Example: 
+Input: strs = ["flower","flow","flight"]
+Output: "fl"
+
+Difficulty: Easy
+
+
+class solution():
+    def longestCommonPrefix(self, strs):
+
+        if not strs:
+            return "No strings"
+        shortest = min(strs,key=len)
+        for i, ch in enumerate(shortest):
+            for other in strs:
+                if other[i] != ch:
+                    return shortest[:i]
+        return shortest 
+    
+string = ["flower","flow","flight"]
+
+case_one = solution()
+case_one.longestCommonPrefix(string)
+
+# from SimplyFaisal
+
+# Actually this problem has many solutions, like divide and conque, binary search which splits smallest string into two parts, and then compare the first part of it with all of the strings, if all correct, then binary the second
+# part and do it again until we find the exact length of common prefix. If the first part doesn't match all the words, then binary the first part of it.
