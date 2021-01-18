@@ -1,0 +1,42 @@
+Problem:
+Given an integer x, return true if x is palindrome integer.
+An integer is a palindrome when it reads the same backward as forward. For example, 121 is palindrome while 123 is not.
+
+Example:
+Input: x = 121
+Output: true
+
+# This problem has two solutions, reverse or string method, for string method, it is too easy,
+# for reverse method, we can refer to reverse number problem, but to overcome the overflow issue,
+# we can just check the half part of number. That's all
+
+# Solution best  (reverse method)
+class solution():
+    def palindrome_number(self,x):
+        num = 0
+        if number < 0:
+            return False
+        else:
+            while x > num:
+                num = x%10 +num *10
+                x //= 10
+            if (x == num//10 or x ==num):
+                return True
+            else: 
+                return False
+
+number = -1321
+case_one = solution()
+case_one.palindrome_number(number)
+
+
+# Solution then (string)
+
+def palindrome(number):
+    reverse = str(number)[::-1]
+    if reverse == str(number):
+        return True
+    else: 
+        return False
+
+palindrome(1321)
