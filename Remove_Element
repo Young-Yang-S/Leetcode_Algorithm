@@ -1,0 +1,28 @@
+Problem: Remove Element
+Given an array nums and a value val, remove all instances of that value in-place and return the new length.
+
+Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+
+The order of elements can be changed. It doesn't matter what you leave beyond the new length.
+
+Example: 
+Input: nums = [3,2,2,3], val = 3
+Output: 2, nums = [2,2]
+
+
+Solution
+def reomve_element(number,val):
+    index =0
+    for i in range(0,len(number)):
+        if number[i] != val:
+            number[index] = number[i]
+            index +=1
+            
+    for delete_index in range(i, index-1, -1):
+            del number[delete_index]
+    return number
+
+reomve_element([0,1,2,2,3,0,4,2],2)
+
+
+# similar as removing duplicate elements problem
