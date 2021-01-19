@@ -1,0 +1,85 @@
+  Problem: Count and Say
+  
+  Difficulty: easy
+
+Question 1:  given a string, use count and say rule to print out result.
+
+Example: 3322251
+output: 23321511
+333221566787
+output: 3322111526171817
+
+def count_say(number):
+    string = ''
+    if len(number) == 1:
+        return ('1'+str(number[0]))
+    pre = 0
+    index =1
+    for i in range(0,len(number)):
+        if number[i] == number[index] :
+            if index == len(number)-1:                
+                string = string + str(index-pre+1) + str (number[i])
+                return string
+            index +=1
+        else:
+            if index == len(number)-1:
+                if pre == index:
+                    string = string + '1' + str(number[index])
+                    return string
+                else:
+                    string = string + '1' + str(number[pre])
+                    pre +=1
+            else:
+                string = string + str(index-pre) + str(number[i])
+                pre = index
+                index +=1
+    
+count_say('3322251')
+
+
+Question 2 : given a number, return the corresponding count and say number
+
+Example: 1, '1' 
+2, '11'
+3, '21'
+4, '1211'
+5, '111221'
+
+Solution: add another loop function to get it
+def count_say(number):
+    string = ''
+    if len(number) == 1:
+        return ('1'+str(number[0]))
+    pre = 0
+    index =1
+    for i in range(0,len(number)):
+        if number[i] == number[index] :
+            if index == len(number)-1:                
+                string = string + str(index-pre+1) + str (number[i])
+                return string
+            index +=1
+        else:
+            if index == len(number)-1:
+                if pre == index:
+                    string = string + '1' + str(number[index])
+                    return string
+                else:
+                    string = string + '1' + str(number[pre])
+                    pre +=1
+            else:
+                string = string + str(index-pre) + str(number[i])
+                pre = index
+                index +=1
+    
+
+
+def loop(number):
+    if number ==1:
+        return '1'
+    else:
+        initial = '1'
+        for i in range(0,number-1):
+            initial = count_say(initial)
+        return initial 
+
+loop(5)
