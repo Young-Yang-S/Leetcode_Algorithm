@@ -1,0 +1,21 @@
+Problem:  Implement strStr()
+Implement strStr().
+
+Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+
+Example: 
+Input: haystack = "hello", needle = "ll"
+Output: 2
+
+Solution:
+
+def strStr(haystack: str, needle: str):
+    L, n = len(needle), len(haystack)
+    
+    for start in range(n - L + 1):
+        if haystack[start: start + L] == needle:
+            return start
+    return -1
+    
+strStr("hello",'ll')
