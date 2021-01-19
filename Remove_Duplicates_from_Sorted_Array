@@ -1,0 +1,33 @@
+Problem: Remove Duplicates from Sorted Array
+
+Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.
+
+Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+
+Example: [1,1,2,2,2,2,3,3,3,5]
+[1,2,3,4,5]
+
+Difficulty: Easy
+
+
+
+
+def removeduplicate(lister):
+    if not lister:
+        return 'Null List'
+    else:
+        index = 1
+        for i in range(0,len(lister)-1):
+            if lister[i] != lister[i+1]:
+                lister[index] = lister[i+1]
+                index +=1
+                print(index)
+
+        
+        for delete_index in range(i+1, index-1, -1):
+            del lister[delete_index]
+
+        return lister
+
+removeduplicate([1,1,2,2,2,2,3,3,3,5])
+
