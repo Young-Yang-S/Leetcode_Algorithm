@@ -36,6 +36,21 @@ def count_say(number):
     
 count_say('3322251')
 
+or 
+
+start = 0
+string =''
+for i in range(1,len(a)):
+    if a[start] != a[i]:
+        string = string + str(i-start) + a[start]
+        start = i
+    if i == len(a)-1 and (int(i) - start) == 0:
+        string = string + '1' + a[i]
+    
+    elif  i == len(a)-1:
+        string = string + str(i-start+1) + a[i]
+        
+        
 
 Question 2 : given a number, return the corresponding count and say number
 
