@@ -1,0 +1,39 @@
+Questions: Climb stairs
+
+You are climbing a staircase. It takes n steps to reach the top.
+Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
+Input: n = 3
+Output: 3
+Explanation: There are three ways to climb to the top.
+1. 1 step + 1 step + 1 step
+2. 1 step + 2 steps
+3. 2 steps + 1 step
+
+
+Solution 1: Brute Force
+
+def climb_Stairs(i, n):
+    if (i > n):
+            return 0
+    
+    if (i == n):
+            return 1
+        
+    return climb_Stairs(i + 1, n) + climb_Stairs(i + 2, n);
+
+
+Solution 2: Dynamic Programming
+def stairs(n):
+    if (n==1):
+        return 1
+    
+    plist = [0] * (n+1)
+    plist[1] = 1
+    plist[2] = 2
+    for i in range(3,n+1):
+        plist[i] = plist[i-1] + plist[i-2]
+        
+    return plist[n]
+
+stairs(4)
