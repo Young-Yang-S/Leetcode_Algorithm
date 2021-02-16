@@ -1,0 +1,32 @@
+Question: Sqrt(x)
+Given a non-negative integer x, compute and return the square root of x.
+Since the return type is an integer, the decimal digits are truncated, and only the integer part of the result is returned.
+
+ Example: 
+ 
+Input: x = 8
+Output: 2
+
+Easy
+
+This problem could be solved by using binary search, we know when x is larger than 2, then its squre root is less than x/2, so we can use binary partition until we find the result.
+
+def squre(num):
+    if num < 2:
+        return num
+    
+    left, right = 2, num
+    
+    while left+1 < right:
+        middle = int((left +right)/2)
+        if middle *middle > num:
+            right =middle
+        elif middle * middle < num:
+            left = middle
+        else:
+            return middle
+        
+    return left
+ 
+num = 122
+squre(num)
