@@ -60,3 +60,8 @@ class MinStack:
 a = MinStack()
 a.push(6)
 a.getMin()
+
+
+
+# This question is good, because firstly it is a good question for creating class, secondly it is good because it requires you to gt the built-in function within constant time, then in this question, key is push, here for the 
+new coming element, we additionally add the minimum value within the current stack, then we get retrieve the min value within O(1), pretty good.
