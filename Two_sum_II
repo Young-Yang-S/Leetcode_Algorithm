@@ -1,0 +1,27 @@
+  Question: Two sum II,  input array is sorted
+
+Input: numbers = [2,7,11,15], target = 9
+Output: [1,2]
+Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.
+
+
+Solution:
+
+def solution(numbers, targert):
+    hashs  = {}
+    count = 1
+    for i in range(0,len(numbers)):
+        if numbers[i] in hashs:
+            if hashs[numbers[i]] != i+1:
+                return [hashs[numbers[i]],i+1]
+            
+        dif = target - numbers[i]
+        hashs[dif] = i+1
+        
+numbers = [1,2,5,5,6]
+target = 10
+solution(numbers,target)
+
+
+# for this question, I choose to use hash table idea, here one thing should be noted that we should firstly check the condition then add difference to the dic to make sure the same sum elements (like here 5,5) to be outputed
+correctly.
