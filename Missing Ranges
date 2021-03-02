@@ -1,0 +1,46 @@
+Quesiton: Missing ranges
+
+Example:
+
+Input: nums = [0,1,3,50,75], lower = 0, upper = 99
+Output: ["2","4->49","51->74","76->99"]
+Explanation: The ranges are:
+[2,2] --> "2"
+[4,49] --> "4->49"
+[51,74] --> "51->74"
+[76,99] --> "76->99"
+
+
+
+Solution:
+def solution(nums,lower,upper):
+    result = []
+    if nums==[]:
+        if lower == upper:
+            return result.append(str(lower))
+        else:
+            return result.append(str(lower) + '->' + str(upper))
+    
+    else:
+        if lower == upper:
+            return result
+        else:
+            lower = lower -1 
+            upper = upper +1
+            element = [lower] + nums + [upper]
+            for i in range(0,len(element)-1):
+                if element[i] < element[i+1] -2:
+                    result.append(str(element[i]+1) + '->' + str(element[i+1]-1))
+                elif element[i] == element[i+1] -2:
+                    result.append(str(element[i]+1))
+                else:
+                    continue
+            return result
+
+nums = [0,1,3,50,75]
+lower = 0
+upper = 99
+
+solution(nums,lower,upper)
+
+# Easy question, just scan element in the list one by one
