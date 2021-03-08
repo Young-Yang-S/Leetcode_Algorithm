@@ -1,0 +1,71 @@
+Question: Isomorphic Strings
+
+Example: 
+
+Given two strings s and t, determine if they are isomorphic.
+
+Two strings s and t are isomorphic if the characters in s can be replaced to get t.
+
+All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
+
+Input: s = "egg", t = "add"
+Output: true
+
+
+Solution:
+
+def count(string1,string2):
+    old = {}
+    if len(string1) != len(string2):
+        return False
+    else:
+        for i in range(0,len(string1)):
+            if string1[i] not in old and string2[i] not in old.values():
+                old[string1[i]] = string2[i]
+            elif  string1[i] in old and string2[i] not in old.values():
+                    return False
+            elif  string1[i] not in old and string2[i]  in old.values():
+                return False
+            else:
+                if old[string1[i]] !=string2[i]:
+                    return False
+        return True
+
+string1 = 'forbocg'
+string2 = 'younoug'
+
+count(string1,string2)  
+
+
+This is the additional code:
+
+Example:
+inp = ['aab', 'xxy', 'xyz', 'abc', 'def', 'xyx']
+
+output:
+[
+['xyx'], 
+['xyz', 'abc', 'def'], 
+['aab', 'xxy']
+]
+
+Solution:
+def outer(inputt):
+    result = {}
+    pointer = []
+    for i in range(0,len(inputt)):
+        if   i not in pointer:
+            result[inputt[i]] = []
+            for j in range(1,len(inputt)):
+                if i != j:
+                    if count(inputt[i],inputt[j]):
+                        result[inputt[i]].append(inputt[j])
+                        pointer.append(j)
+        else:
+            continue
+    return result
+
+inp = ['aab', 'xxy', 'xyz', 'abc', 'def', 'xyx']
+outer(inp)
+
+# We can just write a outer function to check every element in the list to put them into different categories.
